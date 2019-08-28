@@ -1,6 +1,7 @@
 package com.bah.app.customerapi;
 
 public class Customer {
+	private int id;
 	private String username;
 	private String email;
 	private String password;
@@ -12,6 +13,14 @@ public class Customer {
 		this.password = password;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUsername() {
 		return username;
 	}

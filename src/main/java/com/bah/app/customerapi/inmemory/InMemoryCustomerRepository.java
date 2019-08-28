@@ -28,4 +28,6 @@ public class InMemoryCustomerRepository {
 	public Customer getCustomer(int index) {
 		return customerList.get(0);
 	}
+	
+	// TODO: Add "addcustomer" method
 }
