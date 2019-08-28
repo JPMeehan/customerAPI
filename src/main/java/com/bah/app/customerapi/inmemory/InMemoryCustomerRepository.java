@@ -15,9 +15,7 @@ public class InMemoryCustomerRepository {
 	}
 	
 	
-	public ArrayList<Customer> getAllCustomer() {
-		return this.customerList;
-	}
+
 	
 	public void createCustomerList() {
 		customerList.add(new Customer("Tom", "t@yahoo.com", "pass1"));
@@ -25,7 +23,23 @@ public class InMemoryCustomerRepository {
 		customerList.add(new Customer("Thomas", "tms@yahoo.com", "pass3"));
 	}
 	
-	public Customer getCustomer(int index) {
-		return customerList.get(0);
+	
+	public Customer getCustomer(String name) {
+		Customer temp = new Customer("","","");
+//			for(Customer cus: this.customerList) {
+//				temp = (cus.getUsername().equalsIgnoreCase(name)) ? cus : null;
+//			}
+//			return temp;
+		
+		for (int i = 0; i < this.customerList.size(); i++) {
+			if(this.customerList.get(i).getUsername().equalsIgnoreCase(name)) {
+				temp = this.customerList.get(i);
+			}
+		}
+			return temp;
+		}
+		
+	public ArrayList<Customer> getAllCustomers() {
+		return this.customerList;
 	}
 }
