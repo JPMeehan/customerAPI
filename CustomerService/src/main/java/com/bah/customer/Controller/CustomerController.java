@@ -13,6 +13,7 @@ import com.bah.customer.Repository.InMemoryCustomerRepository;
 
 @RestController
 public class CustomerController {
+<<<<<<< HEAD
 	@Autowired 
 	InMemoryCustomerRepository inMemoryCustomerRepository;
 	
@@ -29,6 +30,21 @@ public class CustomerController {
 	@GetMapping("/api/register")
 	public Customer getCustomer(@PathVariable String name) {
 		return inMemoryCustomerRepository.getCustomer("frank");
+=======
+	
+	@Autowired
+	private InMemoryCustomerRepository inMemoryCustomerRepository;
+	
+	@GetMapping("/api/customer")
+	public ArrayList<Customer> getAllCustomers() {
+		return inMemoryCustomerRepository.getAllCustomers();
+	}
+	
+	@GetMapping("/api/customer/{name}")
+	public Customer getCustomer(@PathVariable String name) {
+	
+		return inMemoryCustomerRepository.getCustomer(name);
+>>>>>>> cec676973f800877acf4169304a97a0b6b2b0c24
 	}
 	
 }
