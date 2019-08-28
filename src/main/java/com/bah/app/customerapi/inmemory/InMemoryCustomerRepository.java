@@ -10,6 +10,11 @@ public class InMemoryCustomerRepository {
 	ArrayList<Customer> customerList = new ArrayList<Customer>();
 	
 	
+	public InMemoryCustomerRepository() {
+		this.createCustomerList();
+	}
+	
+	
 	public ArrayList<Customer> getAllCustomer() {
 		return this.customerList;
 	}

@@ -19,7 +19,7 @@ public class CustomerAPI {
 	@GetMapping("/api/register")
 	public Customer getFirstCustomer() {
 		//return new Customer("tom", "y@yahoo.com", "123abc");
-		inMemoryCustomerRepository.createCustomerList();
+		//inMemoryCustomerRepository.createCustomerList();
 		return inMemoryCustomerRepository.getCustomer(1);
 	}
 	
