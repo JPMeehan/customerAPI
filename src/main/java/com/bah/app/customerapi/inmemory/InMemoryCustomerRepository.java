@@ -11,7 +11,7 @@ public class InMemoryCustomerRepository {
 	
 	
 	public InMemoryCustomerRepository() {
-		this.createCustomerList();
+		this.dummyInitialize();
 	}
 	
 	
@@ -19,7 +19,7 @@ public class InMemoryCustomerRepository {
 		return this.customerList;
 	}
 	
-	public void createCustomerList() {
+	public void dummyInitialize() {
 		customerList.add(new Customer("Tom", "t@yahoo.com", "pass1"));
 		customerList.add(new Customer("Tommy", "tt@yahoo.com", "pass2"));
 		customerList.add(new Customer("Thomas", "tms@yahoo.com", "pass3"));
@@ -28,6 +28,22 @@ public class InMemoryCustomerRepository {
 	public Customer getCustomer(int index) {
 		return customerList.get(0);
 	}
+
+
+	public void addCustomer(Customer newCustomer) {
+		customerList.add(newCustomer);
+	}
+
+
+	public void updateCustomer(Customer oldCustomer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void deleteCustomer(Customer oldCustomer) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	// TODO: Add "addcustomer" method
 }

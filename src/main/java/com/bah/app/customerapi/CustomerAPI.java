@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,12 +43,36 @@ public class CustomerAPI {
 				|| newCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();
 		}
-		//newCustomer = inMemoryCustomerRepository. // TODO: Add way to add customer to the ArrayList
+		inMemoryCustomerRepository.addCustomer(newCustomer);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(newCustomer.getId()).toUri();
 		ResponseEntity<?> response = ResponseEntity.created(location).build();
 		return response;
 		
+	}
+	
+	@PutMapping("/{customerId}")
+	public ResponseEntity<?> update(@RequestBody Customer oldCustomer,
+			@PathVariable("customerId") long customerId) {
+		if (oldCustomer.getId()!=customerId
+				|| oldCustomer.getUsername()==null
+				|| oldCustomer.getEmail() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		inMemoryCustomerRepository.updateCustomer(oldCustomer);
+		return ResponseEntity.ok().build();
+	}
+	
+	@DeleteMapping("/{customerId")
+	public ResponseEntity<?> delete(@RequestBody Customer oldCustomer,
+			@PathVariable("customerId") long customerId) {
+		if (oldCustomer.getId()!=customerId
+				|| oldCustomer.getUsername()==null
+				|| oldCustomer.getEmail() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		inMemoryCustomerRepository.deleteCustomer(oldCustomer);
+		return ResponseEntity.ok().build();
 	}
 	
 }
