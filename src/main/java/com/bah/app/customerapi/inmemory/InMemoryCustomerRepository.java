@@ -15,17 +15,29 @@ public class InMemoryCustomerRepository {
 	}
 	
 	
-	public ArrayList<Customer> getAllCustomer() {
-		return this.customerList;
-	}
+
 	
 	public void createCustomerList() {
-		customerList.add(new Customer("Tom", "t@yahoo.com", "pass1"));
-		customerList.add(new Customer("Tommy", "tt@yahoo.com", "pass2"));
-		customerList.add(new Customer("Thomas", "tms@yahoo.com", "pass3"));
+//		customerList.add(new Customer("Tom", "t@yahoo.com", "pass1"));
+//		customerList.add(new Customer("Tommy", "tt@yahoo.com", "pass2"));
+//		customerList.add(new Customer("Thomas", "tms@yahoo.com", "pass3"));
 	}
 	
-	public Customer getCustomer(int index) {
-		return customerList.get(0);
+	
+	public Customer getCustomer(String name) {
+		Customer temp = null; 
+		//new Customer("","","");
+		
+		
+		for (int i = 0; i < this.customerList.size(); i++) {
+			if(this.customerList.get(i).getUsername().equalsIgnoreCase(name)) {
+				temp = this.customerList.get(i);
+			}
+		}
+			return temp;
+		}
+		
+	public ArrayList<Customer> getAllCustomers() {
+		return this.customerList;
 	}
 }
