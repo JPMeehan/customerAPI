@@ -5,10 +5,6 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'com.gradle.build-scan' version '2.0.2'
-    id 'org.springframework.boot' version '2.0.5.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
-    
 }
 
 repositories {
@@ -20,23 +16,8 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:2.1.7.RELEASE'
-
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    components {
-        withModule('org.springframework:spring-beans') {
-            allVariants {
-                withDependencyConstraints {
-                    // Need to patch constraints because snakeyaml is an optional dependency
-                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
-                }
-            }
-        }
-    }
-
+    compile 'org.hsqldb:hsqldb:2.4.1'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.1.7.RELEASE'
 }
 
 group = 'com.metropolitancc.spring'

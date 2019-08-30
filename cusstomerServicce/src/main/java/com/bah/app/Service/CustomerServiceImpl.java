@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer findByName(String name) {
 		// TODO Auto-generated method stub
-		Customer temp = new Customer("","","");
+		Customer temp = new Customer("","","",0L);
 		
 		Iterator<Customer> itr =  this.findAllCustomers().iterator();
 		

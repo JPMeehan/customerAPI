@@ -18,14 +18,15 @@ public class InMemoryCustomerRepository {
 
 	
 	public void createCustomerList() {
-		customerList.add(new Customer("Tom", "t@yahoo.com", "pass1"));
-		customerList.add(new Customer("Tommy", "tt@yahoo.com", "pass2"));
-		customerList.add(new Customer("Thomas", "tms@yahoo.com", "pass3"));
+//		customerList.add(new Customer("Tom", "t@yahoo.com", "pass1"));
+//		customerList.add(new Customer("Tommy", "tt@yahoo.com", "pass2"));
+//		customerList.add(new Customer("Thomas", "tms@yahoo.com", "pass3"));
 	}
 	
 	
 	public Customer getCustomer(String name) {
-		Customer temp = new Customer("","","");
+		Customer temp = null; 
+		//new Customer("","","");
 		
 		
 		for (int i = 0; i < this.customerList.size(); i++) {

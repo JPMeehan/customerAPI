@@ -70,9 +70,8 @@ public class CustomerAPI {
 				|| newCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();
 		}
-		repo.save(newCustomer);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(newCustomer.getId()).toUri();
+		newCustomer = repo.save(newCustomer);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCustomer.getId()).toUri();
 		ResponseEntity<?> response = ResponseEntity.created(location).build();
 		return response;
 		
