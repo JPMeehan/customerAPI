@@ -64,7 +64,7 @@ public class CustomerAPI {
 	
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Customer newCustomer, 
-			HttpRequest request, UriComponentsBuilder uri) {
+			 UriComponentsBuilder uri) {
 		if (newCustomer.getId()!=0
 				|| newCustomer.getUsername()==null
 				|| newCustomer.getEmail() == null) {

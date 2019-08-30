@@ -20,6 +20,10 @@ public class Customer {
 	@Column(name="password")
 	private String password;
 	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Customer(String username, String email, String password, Long id) {
 		super();
 		this.username = username;
