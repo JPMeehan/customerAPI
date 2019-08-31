@@ -66,7 +66,7 @@ public class CustomerAPI {
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@RequestBody Customer updateCustomer,
 			@PathVariable("id") long iD) {
-		if (updateCustomer.getId()!= iD - 1
+		if (updateCustomer.getId()!= iD
 				|| updateCustomer.getUsername()==null
 				|| updateCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();

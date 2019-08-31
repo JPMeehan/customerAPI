@@ -1,5 +1,7 @@
 package com.bah.app.customerAPI;
 
+import java.util.Random;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="Customer")
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	@Column(name="username")
 	private String username;
@@ -20,16 +22,19 @@ public class Customer {
 	@Column(name="password")
 	private String password;
 	
+	
+	
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Customer(String username, String email, String password, Long id) {
+	public Customer(String username, String email, String password) {
 		super();
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.id = id;
+		Random random = new Random();
+		this.id = random.nextLong();
 	}
 	
 	public String getUsername() {
