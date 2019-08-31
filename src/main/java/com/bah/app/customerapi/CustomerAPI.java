@@ -71,22 +71,12 @@ public class CustomerAPI {
 				|| updateCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();
 		}
-		
-		Customer temp = repo.findByid(iD);
-		temp.setUsername(updateCustomer.getUsername());
-		temp.setPassword(updateCustomer.getPassword());
-		temp.setEmail(updateCustomer.getEmail());
-		repo.save(temp);
+		repo.save(updateCustomer);
 		return ResponseEntity.ok().build();
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteCustomer(@PathVariable("id") Long id) {
-//		for (Iterator<Customer> iterator = this.getAllCustomers().iterator(); iterator.hasNext();) {
-//			Customer temp = iterator.next();
-//			if(temp.getId() == id) {
-//				repo.delete(temp);
-//			}
 			repo.deleteById(id);
 		}
 	}
