@@ -75,12 +75,20 @@ public class CustomerAPI {
 		return ResponseEntity.ok().build();
 	}
 	
+	/*
 	@DeleteMapping("/{id}")
 	public void deleteCustomer(@PathVariable("id") Long id) {
 			repo.deleteById(id);
 		}
+	*/
+
+	@DeleteMapping("/{name}")
+	//@DeleteMapping("/user/{name}")
+	public void deleteCustomerByName(@PathVariable("name") String name) {
+
+		repo.delete(repo.findByusername(name));
 	}
 
 	
-	
+}
 
