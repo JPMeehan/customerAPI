@@ -2,10 +2,10 @@ package com.bah.app.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.bah.app.customerapi.Customer;
+import com.bah.app.customerAPI.Events;
 
-public interface CustomerRepository extends CrudRepository<Customer, Long>{
-	public Customer findByUsername(String userName);
-		
+public interface CustomerRepository extends CrudRepository<Events, Long>{
+	public Events findByusername(String username);		
+	public Events findByid(Long id);
 	
 }

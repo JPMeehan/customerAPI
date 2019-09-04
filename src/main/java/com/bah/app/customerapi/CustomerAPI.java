@@ -1,11 +1,11 @@
-package com.bah.app.customerapi;
+package com.bah.app.customerAPI;
 
 import java.net.URI;
-import java.util.Optional;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +20,7 @@ import com.bah.app.Repository.CustomerRepository;
 //import com.bah.app.Service.CustomerService;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/customer")
 public class CustomerAPI {
 	
 	
@@ -29,25 +29,25 @@ public class CustomerAPI {
 	
 	
 	@GetMapping()
-	public Iterable<Customer> getAllCustomers() {
+	public Iterable<Events> getAllCustomers() {
 		return repo.findAll();
 	}
-	
-	@GetMapping("/{id}")
-	public Optional<Customer> getCustomerbyId(@PathVariable long id) {
+		
+	@GetMapping("/user/{id}")
+	public Events getCustomerbyId(@PathVariable long id) {
 		//return customerServiceImpl.findCustomerById(id);
-		return repo.findById(id);
+		return repo.findByid(id);
 	}
 	
 	@GetMapping("/{name}") 
-	public Customer getCustomerbyName(@PathVariable String name) {
+	public Events getCustomerbyName(@PathVariable String name) {
 		//return customerServiceImpl.findByName(name);
-		return repo.findByUsername(name);
+		return repo.findByusername(name);
 	}
 	
 	
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Customer newCustomer, 
+	public ResponseEntity<?> create(@RequestBody Events newCustomer, 
 			 UriComponentsBuilder uri) {
 		if (newCustomer.getId()!=0
 				|| newCustomer.getUsername()==null
@@ -61,19 +61,24 @@ public class CustomerAPI {
 		
 	}
 	
-	@PutMapping("/{customerId}")
-	public ResponseEntity<?> update(@RequestBody Customer oldCustomer,
-			@PathVariable("customerId") long customerId) {
-		if (oldCustomer.getId()!=customerId
-				|| oldCustomer.getUsername()==null
-				|| oldCustomer.getEmail() == null) {
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@RequestBody Events updateCustomer,
+			@PathVariable("id") long iD) {
+		if (updateCustomer.getId()!= iD
+				|| updateCustomer.getUsername()==null
+				|| updateCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();
 		}
-		repo.save(oldCustomer);
+		repo.save(updateCustomer);
 		return ResponseEntity.ok().build();
 	}
 	
+	@DeleteMapping("/{id}")
+	public void deleteCustomer(@PathVariable("id") Long id) {
+			repo.deleteById(id);
+		}
+	}
+
 	
 	
-	
-}
+
