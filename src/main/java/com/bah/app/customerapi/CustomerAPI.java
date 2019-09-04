@@ -29,25 +29,25 @@ public class CustomerAPI {
 	
 	
 	@GetMapping()
-	public Iterable<Events> getAllCustomers() {
+	public Iterable<Customer> getAllCustomers() {
 		return repo.findAll();
 	}
 		
 	@GetMapping("/user/{id}")
-	public Events getCustomerbyId(@PathVariable long id) {
+	public Customer getCustomerbyId(@PathVariable long id) {
 		//return customerServiceImpl.findCustomerById(id);
 		return repo.findByid(id);
 	}
 	
 	@GetMapping("/{name}") 
-	public Events getCustomerbyName(@PathVariable String name) {
+	public Customer getCustomerbyName(@PathVariable String name) {
 		//return customerServiceImpl.findByName(name);
 		return repo.findByusername(name);
 	}
 	
 	
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Events newCustomer, 
+	public ResponseEntity<?> create(@RequestBody Customer newCustomer, 
 			 UriComponentsBuilder uri) {
 		if (newCustomer.getId()!=0
 				|| newCustomer.getUsername()==null
@@ -62,7 +62,7 @@ public class CustomerAPI {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@RequestBody Events updateCustomer,
+	public ResponseEntity<?> update(@RequestBody Customer updateCustomer,
 			@PathVariable("id") long iD) {
 		if (updateCustomer.getId()!= iD
 				|| updateCustomer.getUsername()==null

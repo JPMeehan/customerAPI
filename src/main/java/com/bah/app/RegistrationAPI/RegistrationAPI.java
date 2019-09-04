@@ -29,7 +29,7 @@ public class RegistrationAPI {
 	
 	
 	@GetMapping()
-	public Iterable<Registration> getAllCustomers() {
+	public Iterable<Registration> getAllRegistrations() {
 		return repo.findAll();
 	}
 		

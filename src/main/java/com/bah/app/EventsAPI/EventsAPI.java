@@ -29,7 +29,7 @@ public class EventsAPI {
 	
 	
 	@GetMapping()
-	public Iterable<Events> getAllCustomers() {
+	public Iterable<Events> getAllEvents() {
 		return repo.findAll();
 	}
 		
@@ -65,7 +65,7 @@ public class EventsAPI {
 	
 	@PutMapping("/{eventID}")
 	public ResponseEntity<?> update(@RequestBody Events updateEvent,
-			@PathVariable("id") String eventID) {
+			@PathVariable("eventID") String eventID) {
 		if (updateEvent.getId()!=0
 				|| updateEvent.getEventCode() == null
 				|| updateEvent.getEventDescription() == null
