@@ -1,4 +1,4 @@
-package com.bah.app.customerAPI;
+package com.bah.app.customerapi;
 
 import java.util.Random;
 
@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	private long id;
 	@Column(name="username")
 	private String username;
 	@Column(name="email")
