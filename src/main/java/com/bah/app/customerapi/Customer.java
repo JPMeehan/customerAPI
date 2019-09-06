@@ -1,4 +1,4 @@
-package com.bah.app.customerAPI;
+package com.bah.app.customerapi;
 
 import java.util.Random;
 
